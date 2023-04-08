@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Topbar.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
@@ -12,12 +12,15 @@ import {
 	Box,
 	Tooltip,
 	IconButton,
+	Badge,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Topbar() {
 	const navigate = useNavigate();
+
+	var cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
 	// find out if user is logged in on local storage
 	const loggedIn = localStorage.getItem('loggedIn');
@@ -39,6 +42,10 @@ function Topbar() {
 	const handleLogout = () => {
 		localStorage.removeItem('loggedIn');
 		navigate('/');
+	};
+
+	const handleOrderHistory = () => {
+		navigate('/orderHistory');
 	};
 
 	const [profileEl, setProfileEl] = React.useState(null);
@@ -124,7 +131,9 @@ function Topbar() {
 							>
 								<MenuItem>Profile</MenuItem>
 								<Divider />
-								<MenuItem>Order History</MenuItem>
+								<MenuItem onClick={() => handleOrderHistory()}>
+									Order History
+								</MenuItem>
 								<Divider />
 								<MenuItem onClick={handleLogout}>Logout</MenuItem>
 							</Menu>
@@ -138,24 +147,9 @@ function Topbar() {
 				</div>
 				<div style={{ position: 'relative' }}>
 					<Link to="/cart" className="topbarText">
-						<ShoppingCartIcon style={{ color: 'white' }} />
-						<span
-							style={{
-								position: 'absolute',
-								left: 14,
-								right: 14,
-								width: 14,
-								height: 14,
-								borderRadius: 7,
-								backgroundColor: 'white',
-								fontSize: 12,
-								fontWeight: 400,
-								textAlign: 'center',
-								color: 'black',
-							}}
-						>
-							0
-						</span>
+						<Badge badgeContent={cart.length} color="info">
+							<ShoppingCartIcon style={{ color: 'white' }} />
+						</Badge>
 						<h4>Cart</h4>
 					</Link>
 				</div>

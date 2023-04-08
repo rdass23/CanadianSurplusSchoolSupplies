@@ -7,6 +7,7 @@ import {
 	Grid,
 	CardActionArea,
 } from '@mui/material';
+import { products } from '../components/Catalogue';
 
 import AspectRatio from '@mui/joy/AspectRatio';
 
@@ -18,52 +19,23 @@ function Homepage() {
 			</Typography>
 
 			<Grid container alignContent="center" spacing={24} columns={9}>
-				<Grid item md={3}>
-					<Card sx={{ width: 300, height: 300 }}>
-						<CardActionArea href="/item">
-							<AspectRatio objectFit="contain">
-								<img src="https://cdn.shopify.com/s/files/1/0018/8474/9859/products/SS7353_1200x1200.jpg?v=1661806253" />
-							</AspectRatio>
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="div">
-									Pencils 10-pack
-								</Typography>
-								<Typography variant="h6">$2.99</Typography>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</Grid>
-				<Grid item md={3}>
-					<Card sx={{ width: 300, height: 300 }}>
-						<CardActionArea href="/item">
-							<AspectRatio objectFit="contain">
-								<img src="https://pyxis.nymag.com/v1/imgs/5f8/8ac/8e038e47188b15fcb4a1826f5b689a3b83-papermate-inkjoy-pens.rsquare.w600.jpg" />
-							</AspectRatio>
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="div">
-									Multi-Color Pens 18-pack
-								</Typography>
-								<Typography variant="h6">$8.99</Typography>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</Grid>
-				<Grid item md={3}>
-					<Card sx={{ width: 300, height: 300 }}>
-						<CardActionArea href="/item">
-							<AspectRatio objectFit="contain">
-								<img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/613RTkUlLDL._AC_SY355_.jpg" />
-							</AspectRatio>
-
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="div">
-									Customizable Pen
-								</Typography>
-								<Typography variant="h6">$0.30/pen</Typography>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</Grid>
+				{products.map((product, idx) => (
+					<Grid item md={3} key={idx}>
+						<Card sx={{ width: 300, height: 300 }}>
+							<CardActionArea href={`/item/${product.id}`}>
+								<AspectRatio objectFit="contain">
+									<img src={product.image} alt={product.name} />
+								</AspectRatio>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										{product.name}
+									</Typography>
+									<Typography variant="h6">${product.price}</Typography>
+								</CardContent>
+							</CardActionArea>
+						</Card>
+					</Grid>
+				))}
 			</Grid>
 		</Container>
 	);

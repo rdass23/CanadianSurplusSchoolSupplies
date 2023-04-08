@@ -7,8 +7,7 @@ function Footer() {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				minHeight: '100%',
-				paddingTop: '100px',
+				minHeight: '38vh',
 			}}
 		>
 			<Box
@@ -25,7 +24,7 @@ function Footer() {
 			>
 				<Container maxWidth="sm">
 					<Typography variant="body1">
-						My sticky footer can be found here.
+						© Copyright Canadian Surplus School Supplies
 					</Typography>
 				</Container>
 			</Box>

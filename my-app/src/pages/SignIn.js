@@ -20,10 +20,6 @@ function SignIn() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
 
 		// Check if email and password are valid, if not display message, if it is, update appbar and redirect to homepage
 		if (

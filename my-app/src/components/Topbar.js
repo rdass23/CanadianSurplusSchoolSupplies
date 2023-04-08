@@ -233,6 +233,8 @@ function Topbar() {
 					<MenuItem onClick={handleCat}>Pencils</MenuItem>
 					<Divider />
 					<MenuItem onClick={handleCat}>Markers</MenuItem>
+					<Divider />
+					<MenuItem onClick={handleCat}>Highlighters</MenuItem>
 				</Menu>
 			</div>
 		</>

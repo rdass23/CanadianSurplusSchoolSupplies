@@ -74,6 +74,11 @@ function Catalogue() {
 								<ListItemText primary="Markers" />
 							</ListItemButton>
 						</ListItem>
+						<ListItem disablePadding>
+							<ListItemButton>
+								<ListItemText primary="Highlighters" />
+							</ListItemButton>
+						</ListItem>
 					</List>
 				</Grid>
 				<Grid item xs={10} paddingTop={2}>

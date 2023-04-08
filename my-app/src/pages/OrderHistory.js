@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Typography,
 	Container,
 	Button,
 	Grid,
 	Paper,
-	TextField,
-	IconButton,
-	ButtonGroup,
 	Stack,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { products } from '../components/Catalogue';
 
 function OrderHistory() {
 	const Img = styled('img')({
@@ -21,7 +18,7 @@ function OrderHistory() {
 		maxHeight: '100%',
 	});
 
-	const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+	const order = products.filter((x) => x.id === '1');
 
 	return (
 		<Container component="main" maxWidth="lg">
@@ -30,7 +27,7 @@ function OrderHistory() {
 			</Typography>
 
 			<Grid textAlign="center">
-				{cart.map((product, idx) => (
+				{order.map((product, idx) => (
 					<Paper
 						sx={{
 							p: 2,

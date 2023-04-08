@@ -48,7 +48,7 @@ function Topbar() {
 		navigate('/orderhistory');
 	};
 
-	const [profileEl, setProfileEl] = React.useState(null);
+	const [profileEl, setProfileEl] = useState(null);
 	const profileOpen = Boolean(profileEl);
 	const handleProfileClick = (event) => {
 		setProfileEl(event.currentTarget);
@@ -89,7 +89,7 @@ function Topbar() {
 									>
 										<Link to="#" className="topbarText">
 											<PersonIcon style={{ color: 'white' }} />
-											<h4> Hi, John! </h4>
+											<h4> Hi, Rebecca! </h4>
 										</Link>
 									</IconButton>
 								</Tooltip>
@@ -228,15 +228,11 @@ function Topbar() {
 					onClose={handleClose}
 					TransitionComponent={Fade}
 				>
-					<MenuItem onClick={handleCat}>Sub-category 1</MenuItem>
+					<MenuItem onClick={handleCat}>Pens</MenuItem>
 					<Divider />
-					<MenuItem onClick={handleCat}>Sub-category 2</MenuItem>
+					<MenuItem onClick={handleCat}>Pencils</MenuItem>
 					<Divider />
-					<MenuItem onClick={handleCat}>Sub-category 3</MenuItem>
-					<Divider />
-					<MenuItem onClick={handleCat}>Sub-category 4</MenuItem>
-					<Divider />
-					<MenuItem onClick={handleCat}>Sub-category 5</MenuItem>
+					<MenuItem onClick={handleCat}>Markers</MenuItem>
 				</Menu>
 			</div>
 		</>

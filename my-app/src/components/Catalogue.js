@@ -61,27 +61,17 @@ function Catalogue() {
 					<List sx={{ border: 1, minHeight: 500 }}>
 						<ListItem disablePadding>
 							<ListItemButton>
-								<ListItemText primary="Sub-Category 1" />
+								<ListItemText primary="Pens" />
 							</ListItemButton>
 						</ListItem>
 						<ListItem disablePadding>
 							<ListItemButton>
-								<ListItemText primary="Sub-Category 2" />
+								<ListItemText primary="Pencils" />
 							</ListItemButton>
 						</ListItem>
 						<ListItem disablePadding>
 							<ListItemButton>
-								<ListItemText primary="Sub-Category 3" />
-							</ListItemButton>
-						</ListItem>
-						<ListItem disablePadding>
-							<ListItemButton>
-								<ListItemText primary="Sub-Category 4" />
-							</ListItemButton>
-						</ListItem>
-						<ListItem disablePadding>
-							<ListItemButton>
-								<ListItemText primary="Sub-Category 5" />
+								<ListItemText primary="Markers" />
 							</ListItemButton>
 						</ListItem>
 					</List>

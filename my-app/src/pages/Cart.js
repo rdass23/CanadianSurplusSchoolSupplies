@@ -33,9 +33,17 @@ export default function Cart() {
 		p: 4,
 	};
 
-	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	const [editOpen, setEditOpen] = useState(false);
+	const handleEditOpen = () => setEditOpen(true);
+	const handleEditClose = () => setEditOpen(false);
+
+	const [removeOpen, setRemoveOpen] = useState(false);
+	const handleRemoveOpen = () => setRemoveOpen(true);
+	const handleRemoveClose = () => setRemoveOpen(false);
+
+	const [emptyOpen, setEmptyOpen] = useState(false);
+	const handleEmptyOpen = () => setEmptyOpen(true);
+	const handleEmptyClose = () => setEmptyOpen(false);
 
 	const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
@@ -47,11 +55,7 @@ export default function Cart() {
 
 	const emptyCart = () => {
 		localStorage.removeItem('cart');
-		window.location.reload();
-	};
-
-	const removeFromCart = (productToRemove) => {
-		cart.filter((product) => product !== productToRemove);
+		window.location.reload(true);
 	};
 
 	const getCartTotal = () => {
@@ -73,7 +77,7 @@ export default function Cart() {
 			{/* When user has nothing in cart display message saying so */}
 			{cart.length !== 0 ? (
 				<Grid textAlign="center">
-					<Button variant="outlined" color="error" onClick={emptyCart}>
+					<Button variant="outlined" color="error" onClick={handleEmptyOpen}>
 						Empty Cart
 					</Button>
 					{cart.map((product, idx) => (
@@ -132,12 +136,16 @@ export default function Cart() {
 										</Grid>
 									</Grid>
 									<Grid item xs>
-										<Button variant="text" color="info" onClick={handleOpen}>
+										<Button
+											variant="text"
+											color="info"
+											onClick={handleEditOpen}
+										>
 											Edit Item
 										</Button>
 									</Grid>
 									<Grid item>
-										<IconButton onClick={() => removeFromCart(product)}>
+										<IconButton onClick={handleRemoveOpen}>
 											<DeleteIcon />
 										</IconButton>
 										<h5>Remove item from Cart</h5>
@@ -173,8 +181,8 @@ export default function Cart() {
 				</>
 			)}
 			<Modal
-				open={open}
-				onClose={handleClose}
+				open={editOpen}
+				onClose={handleEditClose}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 			>
@@ -192,17 +200,105 @@ export default function Cart() {
 					<Grid container spacing={3} wrap="nowrap" alignItems="center">
 						<Grid item xs>
 							<Button
-								onClick={handleClose}
+								onClick={handleEditClose}
 								fullWidth
 								color="error"
-								variant="contained"
+								variant="outlined"
 							>
 								Cancel
 							</Button>
 						</Grid>
 						<Grid item xs={6}>
-							<Button fullWidth onClick={handleClose} variant="contained">
+							<Button fullWidth onClick={handleEditClose} variant="contained">
 								Update Item
+							</Button>
+						</Grid>
+					</Grid>
+				</Box>
+			</Modal>
+			{/* Modal for making sure you want to remove an item from cart */}
+			<Modal
+				open={removeOpen}
+				onClose={handleRemoveClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={modal}>
+					<Typography
+						id="modal-modal-title"
+						variant="h6"
+						component="h2"
+						textAlign="center"
+					>
+						Remove [Item] from Cart
+					</Typography>
+					<Typography
+						id="modal-modal-title"
+						variant="body1"
+						component="h2"
+						textAlign="center"
+						py={2}
+					>
+						Are you sure you want to remove this item from your cart?
+					</Typography>
+					<Grid container spacing={3} wrap="nowrap" alignItems="center">
+						<Grid item xs>
+							<Button
+								onClick={handleRemoveClose}
+								fullWidth
+								color="error"
+								variant="outlined"
+							>
+								Cancel
+							</Button>
+						</Grid>
+						<Grid item xs={6}>
+							<Button fullWidth onClick={handleRemoveClose} variant="contained">
+								Yes, Remove item
+							</Button>
+						</Grid>
+					</Grid>
+				</Box>
+			</Modal>
+			{/* Modal for making sure you want empty your cart */}
+			<Modal
+				open={emptyOpen}
+				onClose={handleEmptyClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={modal}>
+					<Typography
+						id="modal-modal-title"
+						variant="h6"
+						component="h2"
+						textAlign="center"
+					>
+						Empty cart
+					</Typography>
+					<Typography
+						id="modal-modal-title"
+						variant="body1"
+						component="h2"
+						textAlign="center"
+						py={2}
+					>
+						Are you sure you want to empty all products from your cart?
+					</Typography>
+					<Grid container spacing={3} wrap="nowrap" alignItems="center">
+						<Grid item xs>
+							<Button
+								onClick={handleEmptyClose}
+								fullWidth
+								color="error"
+								variant="outlined"
+							>
+								Cancel
+							</Button>
+						</Grid>
+						<Grid item xs={6}>
+							<Button fullWidth onClick={emptyCart} variant="contained">
+								Yes, Empty Cart
 							</Button>
 						</Grid>
 					</Grid>

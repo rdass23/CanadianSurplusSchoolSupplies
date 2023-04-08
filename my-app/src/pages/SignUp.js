@@ -15,7 +15,7 @@ function SignUp() {
 		// Add authentication in later version
 	};
 	return (
-		<Container component="main" maxWidth="xs">
+		<Container component="main" maxWidth="sm">
 			<Typography variant="h2" align="center" paddingTop={12}>
 				Sign Up
 			</Typography>
@@ -46,6 +46,7 @@ function SignUp() {
 						name="email"
 						placeholder="johndoe@email.com"
 					/>
+
 					<TextField
 						margin="normal"
 						required
@@ -64,6 +65,10 @@ function SignUp() {
 						type="password"
 						id="password2"
 					/>
+					<Typography variant="caption" pb={2}>
+						Passwords must include at least 1 capital letter, 1 lowercase letter
+						and 1 number.
+					</Typography>
 					<Button
 						type="submit"
 						fullWidth

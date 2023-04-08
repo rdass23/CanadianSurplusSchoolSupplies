@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 function SignIn() {
 	const [loggedIn, setLoggedIn] = useState(false);
 
-	const [error, setError] = useState('');
+	const [error, setError] = useState(false);
 	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
@@ -23,19 +23,18 @@ function SignIn() {
 
 		// Check if email and password are valid, if not display message, if it is, update appbar and redirect to homepage
 		if (
-			data.get('email') !== 'test@email.com' &&
-			data.get('password') !== 'password'
+			data.get('email') === 'test@email.com' &&
+			data.get('password') === 'password'
 		) {
-			setError('Incorrect username or password. Try again.');
-		} else {
 			localStorage.setItem('loggedIn', true);
 			navigate('/');
-			window.location.reload();
+		} else {
+			setError(true);
 		}
 	};
 
 	return (
-		<Container component="main" maxWidth="xs">
+		<Container component="main" maxWidth="sm">
 			<Typography variant="h2" align="center" paddingTop={12}>
 				Sign In
 			</Typography>
@@ -47,12 +46,7 @@ function SignIn() {
 					alignItems: 'center',
 				}}
 			>
-				<Box
-					component="form"
-					onSubmit={handleSubmit}
-					validate="true"
-					sx={{ mt: 1 }}
-				>
+				<form onSubmit={handleSubmit}>
 					<TextField
 						margin="normal"
 						required
@@ -76,7 +70,7 @@ function SignIn() {
 
 					{error && (
 						<Typography variant="body1" color="red" mt={3}>
-							{error}
+							Incorrect email or password. Please try again.
 						</Typography>
 					)}
 
@@ -93,7 +87,7 @@ function SignIn() {
 						Don't have an account?
 						<Link href="/signup"> Sign up here!</Link>
 					</Typography>
-				</Box>
+				</form>
 			</Box>
 		</Container>
 	);

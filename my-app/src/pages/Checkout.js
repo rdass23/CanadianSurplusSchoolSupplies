@@ -14,6 +14,7 @@ import {
 	AlertTitle,
 } from '@mui/material';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -24,12 +25,19 @@ function Checkout() {
 	const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
 	const [success, setSuccess] = useState(false);
+	const navigate = useNavigate();
+	console.log(success);
 
 	const handleSubmit = () => {
 		setSuccess(true);
 
 		// empty cart
 		localStorage.removeItem('cart');
+
+		setTimeout(() => {
+			setSuccess(false);
+			navigate('/');
+		}, 3000);
 	};
 
 	const [country, setCountry] = React.useState('');
@@ -37,10 +45,6 @@ function Checkout() {
 	const handleChange = (event) => {
 		setCountry(event.target.value);
 	};
-
-	useEffect(() => {
-		handleSubmit();
-	}, [success]);
 
 	return (
 		<Container component="main" maxWidth="xl">

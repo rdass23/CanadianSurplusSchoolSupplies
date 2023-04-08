@@ -45,7 +45,7 @@ function Topbar() {
 	};
 
 	const handleOrderHistory = () => {
-		navigate('/orderHistory');
+		navigate('/orderhistory');
 	};
 
 	const [profileEl, setProfileEl] = React.useState(null);

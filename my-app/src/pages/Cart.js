@@ -7,6 +7,9 @@ import {
 	Paper,
 	TextField,
 	IconButton,
+	Modal,
+	Box,
+	MenuItem,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -18,6 +21,21 @@ export default function Cart() {
 		maxWidth: '100%',
 		maxHeight: '100%',
 	});
+
+	const modal = {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: 400,
+		bgcolor: 'background.paper',
+		boxShadow: 24,
+		p: 4,
+	};
+
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
@@ -68,7 +86,7 @@ export default function Cart() {
 							}}
 							key={idx}
 						>
-							<Grid container spacing={4}>
+							<Grid container spacing={4} alignItems="center">
 								<Grid item>
 									<Img
 										alt={product.name}
@@ -113,7 +131,12 @@ export default function Cart() {
 											/>
 										</Grid>
 									</Grid>
-									<Grid item textAlign="center">
+									<Grid item xs>
+										<Button variant="text" color="info" onClick={handleOpen}>
+											Edit Item
+										</Button>
+									</Grid>
+									<Grid item>
 										<IconButton onClick={() => removeFromCart(product)}>
 											<DeleteIcon />
 										</IconButton>
@@ -149,6 +172,42 @@ export default function Cart() {
 					</Typography>
 				</>
 			)}
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={modal}>
+					<Typography
+						id="modal-modal-title"
+						variant="h6"
+						component="h2"
+						textAlign="center"
+					>
+						Edit [Item]
+					</Typography>
+					<TextField margin="normal" required fullWidth label="Pen Colour" />
+					<TextField margin="normal" required fullWidth label="Ink Colour" />
+					<Grid container spacing={3} wrap="nowrap" alignItems="center">
+						<Grid item xs>
+							<Button
+								onClick={handleClose}
+								fullWidth
+								color="error"
+								variant="contained"
+							>
+								Cancel
+							</Button>
+						</Grid>
+						<Grid item xs={6}>
+							<Button fullWidth onClick={handleClose} variant="contained">
+								Update Item
+							</Button>
+						</Grid>
+					</Grid>
+				</Box>
+			</Modal>
 		</Container>
 	);
 }

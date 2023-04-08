@@ -12,6 +12,7 @@ import {
 	ListItem,
 	Alert,
 	AlertTitle,
+	CircularProgress,
 } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -60,10 +61,13 @@ function Checkout() {
 				}}
 			>
 				{success ? (
-					<Alert severity="success">
-						<AlertTitle>Success</AlertTitle>
-						Your order has been successfully placed
-					</Alert>
+					<>
+						<Alert severity="success" sx={{ mb: 4 }}>
+							<AlertTitle>Success</AlertTitle>
+							Your order has been successfully placed
+						</Alert>
+						<CircularProgress />
+					</>
 				) : (
 					<Grid container spacing={2}>
 						<Grid item xs={8}>

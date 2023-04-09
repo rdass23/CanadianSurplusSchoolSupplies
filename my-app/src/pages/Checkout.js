@@ -41,6 +41,16 @@ function Checkout() {
 		}, 3000);
 	};
 
+	const getCartTotal = () => {
+		var total = 0;
+
+		cart.forEach((item) => {
+			total += item.price * item.quantity;
+		});
+
+		return total.toFixed(2);
+	};
+
 	const [country, setCountry] = React.useState('');
 
 	const handleChange = (event) => {
@@ -230,6 +240,12 @@ function Checkout() {
 										</Grid>
 									</Grid>
 								))}
+								<Grid container pt={6} px={2}>
+									<Typography variant="h5" pt={3}>
+										Total ${getCartTotal()}
+									</Typography>
+								</Grid>
+
 								<Box
 									display="flex"
 									justifyContent="center"

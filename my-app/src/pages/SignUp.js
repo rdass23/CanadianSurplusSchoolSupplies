@@ -7,12 +7,16 @@ import {
 	Link,
 	Container,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+	const navigate = useNavigate();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		// Add authentication in later version
+		navigate('/');
 	};
 	return (
 		<Container component="main" maxWidth="sm">

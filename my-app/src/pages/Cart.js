@@ -199,12 +199,7 @@ export default function Cart() {
 					<TextField margin="normal" required fullWidth label="Ink Colour" />
 					<Grid container spacing={3} wrap="nowrap" alignItems="center">
 						<Grid item xs>
-							<Button
-								onClick={handleEditClose}
-								fullWidth
-								color="error"
-								variant="outlined"
-							>
+							<Button onClick={handleEditClose} fullWidth variant="outlined">
 								Cancel
 							</Button>
 						</Grid>
@@ -243,12 +238,7 @@ export default function Cart() {
 					</Typography>
 					<Grid container spacing={3} wrap="nowrap" alignItems="center">
 						<Grid item xs>
-							<Button
-								onClick={handleRemoveClose}
-								fullWidth
-								color="error"
-								variant="outlined"
-							>
+							<Button onClick={handleRemoveClose} fullWidth variant="outlined">
 								Cancel
 							</Button>
 						</Grid>
@@ -287,12 +277,7 @@ export default function Cart() {
 					</Typography>
 					<Grid container spacing={3} wrap="nowrap" alignItems="center">
 						<Grid item xs>
-							<Button
-								onClick={handleEmptyClose}
-								fullWidth
-								color="error"
-								variant="outlined"
-							>
+							<Button onClick={handleEmptyClose} fullWidth variant="outlined">
 								Cancel
 							</Button>
 						</Grid>

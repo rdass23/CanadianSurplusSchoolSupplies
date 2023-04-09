@@ -31,7 +31,7 @@ function SignUp() {
 					alignItems: 'center',
 				}}
 			>
-				<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+				<form onSubmit={handleSubmit}>
 					<TextField
 						margin="normal"
 						required
@@ -85,7 +85,7 @@ function SignUp() {
 						Already have an account?
 						<Link href="/signin"> Sign in here!</Link>
 					</Typography>
-				</Box>
+				</form>
 			</Box>
 		</Container>
 	);

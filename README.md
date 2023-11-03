@@ -1,5 +1,8 @@
 # CanadianSurplusSchoolSupplies
 
+## About
+This is a mockup/basic website for the fictional company, "Canadian Surplus School Supplies," created for a Human Centric Computing university class. It is not a fully functioning, live website with security checks. 
+
 ## Getting started
 
 cd my-app

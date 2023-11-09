@@ -39,7 +39,7 @@ export const products = [
 	{
 		id: '3',
 		image:
-			'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/613RTkUlLDL._AC_SY355_.jpg',
+			'https://m.media-amazon.com/images/I/613RTkUlLDL._AC_UF1000,1000_QL80_.jpg',
 		name: 'Customizable Pen',
 		price: '0.30',
 		min: '(Minimum order of 50 pens)',
